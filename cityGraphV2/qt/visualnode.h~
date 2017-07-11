@@ -1,0 +1,27 @@
+#ifndef VISUALNODE_H
+#define VISUALNODE_H
+
+#include <QGraphicsItem>
+#include "grafo/citygraph.h"
+
+class VisualNode : public QGraphicsItem{
+
+public:
+    QPointF &punto;
+    CityGraph::Node * realNode;
+    bool pressed;
+
+    VisualNode(CityGraph::Node *node);
+//    VisualNode(QPointF p);
+//    VisualNode(QPoint *p);
+    QRectF boundingRect() const;
+    void paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget = 0);
+
+// ARREGLAR: por alguna razón, cunado ocurren estos eventos, en graphView ya no recibo los datos del nodo
+// Cuando hago click :(
+//    void mousePressEvent(QGraphicsSceneMouseEvent *event);
+//    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
+
+};
+
+#endif // VISUALNODE_H

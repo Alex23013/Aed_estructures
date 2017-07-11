@@ -1,0 +1,44 @@
+#include "visualnode.h"
+#include <QPainter>
+#include <QDebug>
+VisualNode::VisualNode(CityGraph::Node *node): punto(node->data) {
+    realNode = node;
+}
+
+//VisualNode::VisualNode(QPointF p){
+//    punto = p;
+//    pressed = false;
+//}
+
+QRectF VisualNode::boundingRect() const{
+    //ARREGLAR: Poner límites correctos
+    return QRectF(punto.x()-3,punto.y()-3, 6,6);
+//    return QRectF(10,10,10,10);
+}
+
+void VisualNode::paint(QPainter * painter, const QStyleOptionGraphicsItem * option, QWidget * widget ){
+    QRectF rect = boundingRect();
+
+    painter->setBrush(Qt::red);
+    QPen pen(Qt::black, 1);
+//    if(pressed) pen = QPen(Qt::green,1);
+//    else pen = QPen(Qt::red, 1);
+    painter->setPen(pen);
+    painter->drawEllipse(punto,3,3);
+
+}
+
+
+// Cambia de color cuando se preciona:
+//void VisualNode::mousePressEvent(QGraphicsSceneMouseEvent *event){
+//    pressed = true;
+//    update();
+//    qDebug() << "presionado";
+//    QGraphicsItem::mousePressEvent(event);
+//}
+
+//void VisualNode::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+//    pressed = false;
+//    update();
+//    QGraphicsItem::mouseReleaseEvent(event);
+//}
