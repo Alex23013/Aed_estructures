@@ -105,16 +105,16 @@ void  Tree<T>::PreOrder(CNode<T>* p)
 {
 	if (!p) return;
 	cout << p->mData << " ";
-	InOrder(p->mNode[0]);
-	InOrder(p->mNode[1]);
+	PreOrder(p->mNode[0]);
+	PreOrder(p->mNode[1]);
 }
 
 template <typename T>
 void  Tree<T>::PostOrder(CNode<T>* p)
 {
 	if (!p) return;
-	InOrder(p->mNode[0]);
-	InOrder(p->mNode[1]);
+	PostOrder(p->mNode[0]);
+	PostOrder(p->mNode[1]);
 	cout << p->mData << " ";
 }
 
